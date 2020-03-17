@@ -44,7 +44,8 @@ PROJECT_APPS = [
 ]
 
 THIRED_PARTY_APPS = [
-   'languages' 
+    'languages',
+    'rest_framework'
 ]
 
 INSTALLED_APPS = BULIT_IN_APPS + THIRED_PARTY_APPS + PROJECT_APPS

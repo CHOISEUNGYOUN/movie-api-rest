@@ -1,14 +1,13 @@
 import json
 
-from django.http                  import JsonResponse
-from django.views                 import View
+from rest_framework.generics import ListAPIView
 
-from . import models
+from . import models, serializers
 
 class MissingRequiredValue(Exception):
         pass
 
-class MovieListView(View):
-    
-    def get(self, request):
-        pass
+class MovieListView(ListAPIView):
+
+    queryset = models.Movie.objects.all()
+    serializer_class = serializers.MovieSerializer

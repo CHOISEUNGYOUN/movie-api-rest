@@ -58,6 +58,9 @@ class Genre(models.Model):
     def __str__(self):
         return self.genres
 
+    def natural_key(self):
+        return (self.genres)
+
 class Torrent(models.Model):
     movie         = models.ForeignKey("Movie", on_delete=models.CASCADE, null=True)
     url           = models.URLField(max_length=500, default='')
