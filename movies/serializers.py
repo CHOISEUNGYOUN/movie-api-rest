@@ -2,6 +2,18 @@ from rest_framework import serializers
 
 from movies import models
 
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model  = models.Genre
+        fields = "__all__"
+
+class TorrentSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model  = models.Torrent
+        fields = "__all__"
+
 class MovieSerializer(serializers.ModelSerializer):
     genres   = serializers.SerializerMethodField()
     torrents = serializers.SerializerMethodField()
