@@ -33,7 +33,11 @@ class MovieSerializer(serializers.ModelSerializer):
         )
         
     def get_torrents(self, obj):
-        torrents = models.Torrent.objects.filter(movie=obj.pk)
+        quality = self.context["request"].query_params.get("quality","")
+        if quality == "":
+            torrents = models.Torrent.objects.filter(movie=obj.pk)
+        else:
+            torrents = models.Torrent.objects.filter(movie=obj.pk, quality=quality)
         torrents = [{
             "url"           : t.url,
             "quality"       : t.quality,
