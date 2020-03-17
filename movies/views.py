@@ -9,5 +9,16 @@ class MissingRequiredValue(Exception):
 
 class MovieListView(ListAPIView):
 
-    queryset = models.Movie.objects.all()
     serializer_class = serializers.MovieSerializer
+
+    def get_queryset(self):
+        queryset = models.Movie.objects.all()
+        return queryset
+
+class TorrentListView(ListAPIView):
+
+    serializer_class = serializers.MovieSerializer
+
+    def get_queryset(self):
+        queryset = models.Torrent.objects.all()
+        return queryset
